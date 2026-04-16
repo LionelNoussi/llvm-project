@@ -23,7 +23,7 @@ let hasSideEffects = 1, mayLoad = 1, mayStore = 1 in {
     let Inst{31-25} = funct7;
     let Inst{24-20} = rs2;
     let Inst{19-15} = rs1;
-    let Inst{14-12} = 0b000;
+    let Inst{14-12} = 0b011;
     let Inst{11-7} = 0b00000;
     let Opcode = OPC_XDMA.Value;
   }
@@ -37,18 +37,18 @@ let hasSideEffects = 1, mayLoad = 1, mayStore = 1 in {
     let Inst{31-25} = funct7;
     let Inst{24-20} = uimm5;
     let Inst{19-15} = rs1;
-    let Inst{14-12} = 0b000;
+    let Inst{14-12} = 0b011;
     let Inst{11-7} = rd;
     let Opcode = OPC_XDMA.Value;
   }
 
   class DMInstRdRs1Rs2<bits<7> funct7, string opcodestr>
-    : RVInstR<funct7, 0b000, OPC_XDMA, (outs GPR:$rd),
+    : RVInstR<funct7, 0b011, OPC_XDMA, (outs GPR:$rd),
               (ins GPR:$rs1, GPR:$rs2), opcodestr, "$rd, $rs1, $rs2"> {
   }
 
   class DMInstRdUimm5<bits<7> funct7, string opcodestr>
-    : RVInstR<funct7, 0b000, OPC_XDMA, (outs GPR:$rd),
+    : RVInstR<funct7, 0b011, OPC_XDMA, (outs GPR:$rd),
               (ins uimm5:$uimm5), opcodestr, "$rd, $uimm5"> {
     bits<5> uimm5;
     let Inst{24-20} = uimm5;
@@ -56,13 +56,13 @@ let hasSideEffects = 1, mayLoad = 1, mayStore = 1 in {
   }
 
   class DMInstRdRs2<bits<7> funct7, string opcodestr>
-    : RVInstR<funct7, 0b000, OPC_XDMA, (outs GPR:$rd),
+    : RVInstR<funct7, 0b011, OPC_XDMA, (outs GPR:$rd),
               (ins GPR:$rs2), opcodestr, "$rd, $rs2"> {
     let Inst{19-15} = 0b00000; // rs1 = 0
   }
 
   class DMInstRs1<bits<7> funct7, string opcodestr>
-    : RVInstR<funct7, 0b000, OPC_XDMA, (outs),
+    : RVInstR<funct7, 0b011, OPC_XDMA, (outs),
               (ins GPR:$rs1), opcodestr, "$rs1"> {
     let Inst{24-20} = 0b00000; // rs2 = 0
     let Inst{11-7}  = 0b00000; // rd = 0
