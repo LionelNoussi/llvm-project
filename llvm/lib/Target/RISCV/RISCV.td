@@ -754,7 +754,8 @@ def : ProcessorModel<"snitch", SnitchModel, [FeatureStdExtM,
                                              FeatureExtXfexpauxvechalf,
                                              FeatureExtXfexpauxvecalthalf,
                                              FeatureExtXfexpauxvecquarter,
-                                             FeatureExtXfexpauxvecaltquarter ]>;
+                                             FeatureExtXfexpauxvecaltquarter,
+                                             FeaturePULPExtPostmod ]>;
 
 def : ProcessorModel<"snitch-mempool", SnitchModel, [FeatureStdExtM,
                                              FeatureStdExtA,
